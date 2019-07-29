@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, Select, Card} from 'antd'
-import {changeTotal} from './store/createActions'
+import {changeTotal,changeTotalAsync} from './store/createActions'
 const {Option} = Select
 const cardStyle = {
   width: '600px',
@@ -16,7 +16,8 @@ class App extends React.Component {
   };
 
   render() {
-    const {total} = this.props.store.getState();
+    console.log(this.props.store);
+    const {total} = this.props.store.getState().count;
     const title = (
       <h1>click {total} times</h1>
     );
@@ -40,7 +41,7 @@ class App extends React.Component {
   }
   handleChangetotal = (type) => {
     const selectValue = this.state.selectValue * 1;
-    const {total} = this.props.store.getState();
+    const {total} = this.props.store.getState().count;
     if(type === '+') {
       this.props.store.dispatch(changeTotal(total + selectValue));
     } else if(type === '-') {
@@ -49,9 +50,7 @@ class App extends React.Component {
       if(selectValue % 2 === 0) return;
       this.props.store.dispatch(changeTotal(total + selectValue));
     } else {
-      setTimeout(() => {
-        this.props.store.dispatch(changeTotal(total + selectValue));
-      },1000)
+      this.props.store.dispatch(changeTotalAsync(total + selectValue));
     }
   }
 }

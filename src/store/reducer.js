@@ -1,3 +1,4 @@
+import {combineReducers} from './../lib/redux'
 import {
   CHANGETOTAL
 } from './contantType'
@@ -6,7 +7,7 @@ const defaultState = {
   total: 10
 };
 
-export default function countReducer(state, action) {
+function count(state, action) {
   if (!state) {
     return defaultState;
   }
@@ -16,5 +17,13 @@ export default function countReducer(state, action) {
     default:
       return state;
   }
-
 }
+const defaultUser = {
+  user:''
+};
+function user(state = defaultUser,action) {
+  return state;
+}
+export  default combineReducers({
+  count,user
+})
