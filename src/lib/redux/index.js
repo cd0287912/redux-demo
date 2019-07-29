@@ -43,7 +43,7 @@ export function createStore(reducer) {
 export function combineReducers(reducers) {
   return (state = {}, action) => {
     const totalState = {};
-    reducers.forEach(key => {
+    Object.keys(reducers).forEach(key => {
       totalState[key] = reducers[key](state[key],action)
     })
     return totalState;

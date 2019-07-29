@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, Select, Card} from 'antd'
-import {changeTotal,changeTotalAsync} from './store/createActions'
+import {changeTotal} from './store/createActions'
 const {Option} = Select
 const cardStyle = {
   width: '600px',
@@ -50,7 +50,9 @@ class App extends React.Component {
       if(selectValue % 2 === 0) return;
       this.props.store.dispatch(changeTotal(total + selectValue));
     } else {
-      this.props.store.dispatch(changeTotalAsync(total + selectValue));
+      setTimeout(() => {
+        this.props.store.dispatch(changeTotal(total + selectValue));
+      }, 1000)
     }
   }
 }
