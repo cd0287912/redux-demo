@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button, Select, Card} from 'antd'
 import {changeTotal,changeTotalAsync} from './store/createActions'
-import {connect} from 'react-redux'
+import {connect} from './lib/react-redux'
 const {Option} = Select;
 const cardStyle = {
   width: '600px',
