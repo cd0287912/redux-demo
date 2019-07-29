@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, Select, Card} from 'antd'
-import {changeTotal,changeTotalAsync} from './store/createActions'
+import {changeTotal} from './store/createActions'
 import {connect} from './lib/react-redux'
 const {Option} = Select;
 const cardStyle = {
@@ -50,7 +50,9 @@ class App extends React.Component {
       if(selectValue % 2 === 0) return;
       this.props.changeTotal(total + selectValue);
     } else {
-      this.props.changeTotalAsync(total + selectValue);
+      setTimeout(() => {
+        this.props.changeTotal(total + selectValue);
+      }, 1000)
     }
   }
 }
@@ -59,7 +61,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeTotal:(data) => dispatch(changeTotal(data)),
-  changeTotalAsync:data => dispatch(changeTotalAsync(data))
+  changeTotal:(data) => dispatch(changeTotal(data))
 });
 export default connect(mapStateToProps,mapDispatchToProps)(App);

@@ -4,7 +4,11 @@
     <list default="true" id="0ef18719-f655-4601-8871-b6ade7b0f5d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/react-redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/react-redux/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/redux/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/createActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/createActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

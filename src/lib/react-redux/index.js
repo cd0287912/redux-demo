@@ -29,7 +29,7 @@ export class Provider extends React.Component {
     store: PropTypes.object
   };
   // 向所有声明子组件提供包含要传递数据的context对象
-  static getChildContext = () => {
+  getChildContext = () => {
     return {
       store: this.props.store
     }
@@ -49,12 +49,41 @@ export class Provider extends React.Component {
 export function connect(mapStateToProps, mapDispatchToProps) {
   return (UIComponent) => {
     return class ContainerComponent extends React.Component {
+      constructor(props,context) {
+        super(props);
+        console.log('ContainerComponent',context.store);
+        //得到store
+        const {store} = context;
+        //得到包含的一般属性
+        const stateProps = mapStateToProps(store.getState());
+        //将所有的一般属性作为容器的状态数据
+        this.state = stateProps;
+        //得到包含的函数属性
+        let dispatchProps;
+        if(typeof mapDispatchToProps === 'function') {
+          dispatchProps = mapDispatchToProps(store.dispatch);
+        } else {
+          dispatchProps = Object.keys(mapDispatchToProps).render((prev,key) => {
+            const actionCreatpr = mapDispatchToProps[key];
+            prev[key] = (...args) => store.dispatch(actionCreatpr(...args));
+            return prev;
+          },{})
+        }
+        this.dispatchProps = dispatchProps;
+
+        //绑定store的state变化监听
+        store.subscribe(() => {
+        //  更新容器组件
+          this.setState({...mapStateToProps(store.getState())})
+        })
+      }
       // 声明接收的context数据的名称和类型
       static contextTypes = {
         store: PropTypes.object
       };
+
       render() {
-        return <UIComponent></UIComponent>
+        return <UIComponent {...this.state} {...this.dispatchProps}></UIComponent>
       }
     }
   }

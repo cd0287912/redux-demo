@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux'
+import {combineReducers} from './../lib/redux'
 import {CHANGETOTAL} from './actionType'
 
 const defaultState = {
