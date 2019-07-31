@@ -1,1 +1,1 @@
-#### redux学习之redux分支篇
+#### redux学习之react-redux分支篇
